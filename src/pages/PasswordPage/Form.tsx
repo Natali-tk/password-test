@@ -12,13 +12,11 @@ export const Form = () => {
   const letDig = /^(?=.*[0-9])[a-zA-Z0-9]/;
   const letSym = /^(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]/;
   const digSym = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
-  const mediumPassword =
-    password.match(letSym) || password.match(letDig) || password.match(digSym);
+  const mediumPassword = password.match(letSym) || password.match(letDig) || password.match(digSym);
   const strongRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    console.log(password);
     setPassword(newValue);
   };
 
@@ -34,8 +32,6 @@ export const Form = () => {
     } else if (mediumPassword) {
       setStatus(EPasswordStatus.medium);
     }
-
-    console.log(status);
   }, [password, status]);
 
   return (
